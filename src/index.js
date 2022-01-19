@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "@/styles/index.less";
 import "antd/dist/antd.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ConfigProvider } from 'antd'
+import { ConfigProvider } from "antd";
+import "antd/dist/antd.css";
 import zhCN from "antd/lib/locale/zh_CN";
 import moment from "moment";
 import "moment/locale/zh-cn";
@@ -12,11 +13,11 @@ import "moment/locale/zh-cn";
 moment.locale("en");
 
 ReactDOM.render(
-  <ConfigProvider locale={zhCN}>
-    <React.StrictMode>
+  <React.StrictMode>
+    <ConfigProvider locale={zhCN}>
       <App />
-    </React.StrictMode>
-  </ConfigProvider>,
+    </ConfigProvider>
+  </React.StrictMode>,
   document.getElementById("root")
 );
 
