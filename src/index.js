@@ -13,6 +13,7 @@ import "moment/locale/zh-cn";
 moment.locale("en");
 
 ReactDOM.render(
+  // strictMode  检测代码合理，api是否过期
   <React.StrictMode>
     <ConfigProvider locale={zhCN}>
       <App />
@@ -21,7 +22,5 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// 组件测试
 reportWebVitals();

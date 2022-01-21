@@ -1,6 +1,10 @@
 import { Button, DatePicker, Input, Dropdown, Menu } from "antd";
 import { DownOutlined } from "@ant-design/icons";
+import React, { Component } from "react";
+import MyComponent from './views/first.jsx'
 const { Search } = Input;
+
+
 function onChange(date, dateString) {
   console.log(date, dateString, "antd 日期选择器");
 }
@@ -36,28 +40,52 @@ const menu = (
     <Menu.Item danger>a danger item</Menu.Item>
   </Menu>
 );
-function buttonClick (num) {
-  console.log('按钮被点击了', num)
+function buttonClick(num) {
+  return () => {
+    console.log("num", num);
+  };
 }
-function inputSearch (ev) {
-  console.log('ev:', ev)
+function inputSearch(paramsname) {
+  return (ev) => {
+    console.log("params", paramsname, "event", ev.target.value);
+  };
 }
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Button type="primary" onClick={buttonClick}>ant Button</Button>
-        <DatePicker onChange={onChange} format="YYYY-DD-MM" />
-        <Input onChange={inputSearch} placeholder="这是一个普通输入框" width="200" />
-        <Search onSearch={inputSearch} placeholder="这是一个搜索框" enterButton="查询" />
-        <Dropdown overlay={menu}>
-          <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
-            Hover me <DownOutlined />
-          </a>
-        </Dropdown>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <MyComponent />
+          <Button
+            type="primary"
+            onClick={buttonClick("测试react 绑定事件传参")}
+          >
+            ant Button
+          </Button>
+          <DatePicker onChange={onChange} format="YYYY-DD-MM" />
+          <Input
+            onChange={inputSearch("input1")}
+            placeholder="这是一个普通输入框"
+            width="200"
+          />
+          <Search
+            onSearch={inputSearch}
+            placeholder="这是一个搜索框"
+            enterButton="查询"
+          />
+          <Dropdown overlay={menu}>
+            <a
+              className="ant-dropdown-link"
+              onClick={(e) => e.preventDefault()}
+            >
+              Hover me <DownOutlined />
+            </a>
+          </Dropdown>
+        </header>
+        
+      </div>
+    );
+  }
 }
 
 export default App;

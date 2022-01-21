@@ -1,10 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-
-class myComponent extends React.Component {
-  return() {
-
+class MyComponent extends React.Component {
+  render() {
+    return (
+      <div>the first child componet</div>
+    )
   }
 }
-ReactDOM.render('组件', dom)
+
+export default MyComponent
