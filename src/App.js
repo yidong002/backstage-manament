@@ -49,13 +49,23 @@ function inputSearch(paramsname) {
   return (ev) => {
     console.log("params", paramsname, "event", ev.target.value);
   };
-}
+} 
+
 class App extends Component {
+  state = {
+    message: '父组件的参数'
+  }
+  getChildrenMessage = (resulet,msg) => {
+    console.log(resulet, msg, '父组件接受参数')
+    this.setState({
+      message: msg
+    })
+  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <MyComponent />
+          <MyComponent message={ this.state.message } parent={this}/>
           <Button
             type="primary"
             onClick={buttonClick("测试react 绑定事件传参")}
